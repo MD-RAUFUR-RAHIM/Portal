@@ -1,0 +1,10 @@
+﻿@using Portal.Infrastructure
+@using Portal.Web.Areas.Dashboard.Models
+
+@if (TempData.Peek<ResponseModel>("ResponseMessage") != null)
+{
+    var response = TempData.Get<ResponseModel>("ResponseMessage");
+    <div class="callout callout-@(response.Type.ToString().ToLower())">
+        @response.Message
+    </div>
+}

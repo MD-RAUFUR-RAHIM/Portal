@@ -1,0 +1,107 @@
+﻿@using Portal.Web.Areas.Dashboard.Models
+@model AddStudentModel
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<!--begin::App Content Header-->
+<div class="app-content-header">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-sm-6"><h3 class="mb-0">Add Student</h3></div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Student</li>
+                </ol>
+            </div>
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::App Content Header-->
+<!--begin::App Content-->
+<div class="app-content">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row g-4">
+            <!--begin::Col-->
+            <div class="col-12">
+                <partial name="_ResponsePartial" />
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-md-6">
+                <!--begin::Quick Example-->
+                <div class="card card-primary card-outline mb-4">
+                    <!--begin::Header-->
+                    <div class="card-header"><div class="card-title">Add a new student</div></div>
+                    <!--end::Header-->
+                    <!--begin::Form-->
+                    <form asp-antiforgery="true" asp-area="Dashboard" asp-controller="Student"
+                          asp-action="Add" method="post">
+                        <!--begin::Body-->
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label">Student Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       asp-for="Name"
+                                       aria-describedby="nameHelp" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                                <div id="nameHelp" class="form-text">
+                                    Provide a friendly name
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Gender" class="form-label">Author Gender</label>
+                                <input type="text"
+                                       class="form-control"
+                                       asp-for="Gender"
+                                       aria-describedby="genderHelp" />
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                                <div id="genderHelp" class="form-text">
+                                    Name a gender
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">Student Email</label>
+                                <input type="email"
+                                       class="form-control"
+                                       asp-for="Email"
+                                       aria-describedby="emailHelp" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <div id="emailHelp" class="form-text">
+                                    Provide a email
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                        <!--begin::Footer-->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <!--end::Footer-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Quick Example-->
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::App Content-->
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
